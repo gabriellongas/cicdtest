@@ -1,0 +1,34 @@
+﻿version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "FCG_P@ssw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - backend
+
+  seq:
+    image: datalust/seq
+    container_name: seq
+    restart: unless-stopped
+    ports:
+      - "5341:80"
+    environment:
+      ACCEPT_EULA: "Y"
+      SEQ_FIRSTRUN_ADMINPASSWORD: "admin123"
+    volumes:
+      - seq-data:/data
+    networks:
+      - backend
+
+volumes:
+  sqlserver-data:
+  seq-data:
+
+networks:
+  backend:
