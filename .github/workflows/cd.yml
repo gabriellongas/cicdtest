@@ -26,10 +26,3 @@ jobs:
 
       - name: Publicar projeto
         run: dotnet publish -c Release -o ./publish
-
-      # Exemplo: subir artefato publicado
-      - name: Upload Artefato
-        uses: actions/upload-artifact@v3
-        with:
-          name: aplicacao-publicada
-          path: ./publish
