@@ -36,7 +36,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.18.0
         with:
-          tags: 'latest'
+          tags: 'gabriellongas/fiap-tech-challenge:latest'
           context: .
           push: true
        
